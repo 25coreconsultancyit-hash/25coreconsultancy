@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25CORE Consultancy | Innovating Your Future</title>
+    <style>
+        /* --- RICH & PROFESSIONAL COLOR PALETTE (MATCHING UPLOADED LOGO) --- */
+        :root {
+            --bg-deep: #050a10;       /* Deep Dark Navy/Black background */
+            --bg-panel: #0b1421;      /* Slightly lighter panel background */
+            
+            /* Gold Gradient for Text/Borders */
+            --gold-primary: #D4AF37;  
+            --gold-gradient: linear-gradient(135deg, #dfbd69 0%, #926f34 100%);
+            
+            /* Teal/Cyan Accent from Logo */
+            --teal-accent: #22d3ee;
+            --teal-dark: #0891b2;
+
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;    /* Slate Grey */
+            --border-gold: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-white); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; transition: 0.3s; color: inherit; }
+        ul { list-style: none; }
+        
+        /* --- SCROLL ANIMATION CLASSES --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: #000;
+            border-bottom: 1px solid #1e293b;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .top-contact span { margin-right: 20px; color: var(--text-white); }
+        .top-socials a { margin-left: 15px; color: var(--text-muted); font-weight: 500; }
+        .top-socials a:hover { color: var(--gold-primary); }
+
+        /* --- NAVIGATION --- */
+       nav {
+            background: rgba(5, 10, 16, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between; /* Pushes brand left, menu right */
+            align-items: center;           /* Perfectly aligns everything vertically */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;    /* Keeps logo and text level */
+            gap: 15px;              /* Space between logo and name */
+            font-size: 2.2rem;      /* Massive highlight font */
+            font-weight: 800;
+            line-height: 1;
+            white-space: nowrap;    /* Prevents name from wrapping */
+        }
+
+        .logo img { 
+            height: 4rem;           /* Scaled to match the massive text height */
+            width: auto; 
+            display: block;
+        }
+
+        /* Adjusts the nav links to sit on the same line as the big name */
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            align-items: center;
+        }
+        
+        .nav-links a { 
+            font-size: 1.1rem;     /* Slightly larger links for balance */
+            font-weight: 700;
+            color: var(--teal-accent);
+            text-transform: uppercase;
+        }
+
+        /* Logo Text Colors */
+        .logo span.gold { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo span.teal { color: var(--teal-accent); }
+
+        .nav-links a:hover { color: var(--teal-accent); }
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            background: linear-gradient(to right, rgba(5, 10, 16, 0.9), rgba(5, 10, 16, 0.7)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px 5%;
+        }
+        .hero-content { max-width: 600px; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; }
+        .hero h1 span { color: var(--gold-primary); }
+        .hero p { font-size: 1.2rem; color: #cbd5e1; margin-bottom: 30px; border-left: 4px solid var(--teal-accent); padding-left: 15px; }
+
+        /* Callback Form */
+        .callback-form {
+            background: #ffffff;
+            color: #333;
+            width: 380px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-top: 5px solid var(--gold-primary);
+        }
+        .callback-form h3 { font-size: 1.5rem; margin-bottom: 20px; color: #0b1121; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 0.95rem; outline: none;
+        }
+        .form-group input:focus { border-color: var(--teal-accent); }
+        .form-submit {
+            width: 100%; padding: 12px; background-color: #0b1121; color: var(--gold-primary);
+            border: none; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s;
+        }
+        .form-submit:hover { background-color: var(--gold-primary); color: #000; }
+
+        /* --- SECTIONS --- */
+        .section { padding: 5rem 5%; }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title span { color: var(--gold-primary); border-bottom: 2px solid var(--teal-accent); padding-bottom: 5px; }
+
+        /* --- UPDATED BRAND DNA (The Power of 25) --- */
+        .dna-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 5rem;
+        }
+        .dna-card {
+            background: linear-gradient(145deg, #0b1421, #080f18); 
+            padding: 2.5rem; 
+            border-radius: 12px; 
+            border: 1px solid rgba(34, 211, 238, 0.1); /* Teal border hint */
+            text-align: left; 
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align content */
+            text-align: center;
+        }
+        .dna-card:hover { transform: translateY(-5px); border-color: var(--gold-primary); }
+        
+        .dna-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+        .dna-card h3 { 
+            font-size: 1.4rem; color: var(--gold-primary); margin-bottom: 15px; font-weight: 700;
+        }
+        .dna-card p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.6; }
+
+        /* --- WHY US --- */
+        .why-us-section { background-color: #02060b; } /* Even darker background for contrast */
+        .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+        .value-item { display: flex; gap: 20px; align-items: flex-start; }
+        .value-icon {
+            font-size: 2rem; color: var(--teal-accent); min-width: 60px; text-align: center;
+            background: rgba(34, 211, 238, 0.1); padding: 15px 0; border-radius: 8px;
+        }
+        .value-content h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .value-content p { color: #94a3b8; font-size: 1rem; line-height: 1.7; }
+
+        /* --- SERVICES GRID --- */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .service-card {
+            background: var(--bg-panel); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; transition: 0.3s;
+            display: flex; flex-direction: column;
+        }
+        .service-card:hover { border-color: var(--teal-accent); transform: translateY(-5px); }
+        .service-img { width: 100%; height: 160px; background-color: #1e293b; }
+        .service-img img { width: 100%; height: 100%; object-fit: cover; }
+        .service-info { padding: 20px; flex-grow: 1; }
+        .service-info h3 { color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 10px; }
+        .service-info p { font-size: 0.9rem; color: #94a3b8; }
+
+        /* --- GROW SECTION (Moved above Partners) --- */
+        .grow-section {
+            background-color: var(--bg-deep); /* Match main background or make slightly distinct */
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .grow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 3rem;
+        }
+        .grow-card {
+            background: rgba(255,255,255,0.03);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: 0.3s;
+        }
+        .grow-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--teal-accent);
+        }
+        .grow-icon {
+            font-size: 3rem;
+            color: var(--teal-accent);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .grow-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        .grow-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- PARTNERS --- */
+        .team-grid { 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 40px; 
+        }
+        .partner-card {
+            background: var(--bg-panel); 
+            width: 350px; 
+            border-radius: 10px; 
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 30px; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .partner-card::before { content: ''; position: absolute; top:0; left:0; width:100%; height:4px; background: var(--gold-primary); }
+        
+        .partner-img-container {
+            width: 140px; height: 140px; margin: 0 auto 20px auto; border-radius: 50%;
+            border: 3px solid var(--teal-accent); overflow: hidden; background: #000;
+        }
+        .partner-img-container img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+        
+        .partner-card h3 { font-size: 1.4rem; color: #fff; margin-bottom: 5px; }
+        .partner-card .designation { color: var(--gold-primary); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .partner-card p { font-size: 0.95rem; color: #cbd5e1; text-align: left; line-height: 1.6; margin-bottom: 20px; }
+        .partner-contact { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; display: flex; flex-direction: column; gap: 8px; }
+        .partner-contact span { font-size: 0.9rem; color: var(--teal-accent); font-weight: bold; }
+        .linkedin-btn {
+            display: inline-block; margin-top: 5px; background: #0077b5; color: white; padding: 5px 15px;
+            border-radius: 4px; font-size: 0.8rem; text-transform: uppercase; font-weight: bold;
+        }
+        .linkedin-btn:hover { background: #005e93; }
+
+        /* --- FOOTER --- */
+        footer { background: #000; padding: 3rem 5%; margin-top: 4rem; border-top: 1px solid #222; text-align: center; }
+        .footer-socials { margin-bottom: 20px; }
+        .footer-socials a { color: var(--gold-primary); margin: 0 10px; font-size: 1.2rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1200px) {
+            .logo { font-size: 3rem; }
+            .logo img { height: 3.2rem; }
+        }
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; gap: 40px; padding-top: 100px; }
+            .hero p { border-left: none; padding-left: 0; }
+            .callback-form { width: 100%; }
+            .top-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .nav-links { display: none; }
+            .values-grid, .grow-grid { grid-template-columns: 1fr; }
+            .partner-card { width: 100%; max-width: 400px; }
+        }
+        @media (max-width: 600px) {
+            .logo { font-size: 1.6rem; gap: 10px; }
+            .logo img { height: 1.8rem; }
+            .section { padding: 3rem 5%; }
+            .hero h1 { font-size: 2.2rem; }
+            .partner-card { padding: 20px; }
+        }
+        /* =========================================================
+   RESPONSIVE STABILITY PATCH – APPEND ONLY
+   (DO NOT MODIFY EXISTING CSS)
+========================================================= */
+
+/* Hard stop for horizontal overflow */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Safer flex + grid behavior */
+* {
+    box-sizing: border-box;
+}
+
+/* Images must NEVER overflow */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* NAV FIX – prevent logo + button overflow on mobile */
+@media (max-width: 900px) {
+    nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .logo {
+        white-space: normal;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-gold {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* HERO FIX */
+@media (max-width: 900px) {
+    .hero {
+        min-height: auto;
+        padding-bottom: 60px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+}
+
+/* DNA GRID FIX (your indentation issue source) */
+@media (max-width: 768px) {
+    .dna-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* VALUES GRID FIX */
+@media (max-width: 900px) {
+    .values-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* SERVICES GRID – stop card overflow */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+}
+
+/* GROW GRID FIX */
+@media (max-width: 768px) {
+    .grow-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* PARTNER / TEAM SECTION FIX */
+@media (max-width: 900px) {
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .partner-card {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+/* PARTNER IMAGE SAFETY */
+.partner-img-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* FORM FIX */
+@media (max-width: 600px) {
+    .callback-form {
+        width: 100%;
+        padding: 25px;
+    }
+}
+
+/* TEXT SAFETY */
+p, h1, h2, h3, h4, span {
+    word-wrap: break-word;
+}
+@supports (-webkit-touch-callout: none) {
+  .hero {
+    min-height: -webkit-fill-available;
+  }
+
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Prevent iOS text auto zoom */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Fix flex overflow bug */
+* {
+  min-width: 0;
+}
+
+/* Respect notch / safe areas */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+/* ===============================
+   iOS SAFARI FIXES (CRITICAL)
+   =============================== */
+
+/* Prevent blank sections due to flex height bugs */
+section {
+    min-height: auto !important;
+    overflow: visible !important;
+}
+
+/* Fix Services section collapsing on iOS */
+#services {
+    display: block !important;
+    position: relative;
+    overflow: visible !important;
+}
+
+/* Ensure services grid always renders */
+.services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    overflow: visible !important;
+}
+
+/* Force visibility if IntersectionObserver fails */
+.fade-in-section {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* iOS image rendering fix for partner photos */
+.partner-img-container {
+    min-height: 140px;
+    min-width: 140px;
+    overflow: hidden;
+}
+
+/* Force image paint on iOS */
+.partner-img-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translateZ(0); /* iOS repaint hack */
+}
+
+/* Prevent Safari scroll blanking */
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fix large sections going blank on scroll */
+.section {
+    position: relative;
+    overflow: visible !important;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-contact">
+            <span>✉️ info@25coreconsultancy.com</span>
+            <span>📞 62388 40931</span>
+        </div>
+        <div class="top-socials">
+            <a href="https://www.instagram.com/25core_consultancy/?igsh=dzg1eDN2MzFhYzRz#">Instagram</a>
+            <a href="https://www.facebook.com/p/25-CORE-Consultancy-61581454542663/">Facebook</a>
+            <a href="https://www.linkedin.com/company/25core-consultancy/?viewAsMember=true">LinkedIn</a>
+            <a href="https://x.com/25coreconsult">Twitter</a>
+        </div>
+    </div>
+
+    <nav>
+       <div class="logo">
+            <img src="https://i.postimg.cc/4NyDQGPY/logo-in-white-with-no-background.png" alt="25CORE Logo">
+            <div>25<span class="gold">CORE</span>&nbsp;<span class="teal">Consultancy</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#why">Why Us</a>
+            <a href="#services">Services</a>
+            <a href="#team">Partners</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#contact" class="btn-gold">Consult Now</a>
+    </nav>
+
+    <section class="hero fade-in-section">
+        <div class="hero-content">
+            <h1>We Are <br><span style="color:var(--gold-primary);">25CORE Consultancy</span></h1>
+            <p>Unlocking financial future, Delivering tomorrow's solutions.</p>
+        </div>
+
+   <div class="callback-form">
+    <h3>Request a Callback</h3>
+    <form id="my-form" action="https://formspree.io/f/mpqarwjq" method="POST">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="phone" placeholder="Mobile Number" required>
+        </div>
+        <div class="form-group">
+            <select name="service" required>
+                <option value="" disabled selected>Select Service...</option>
+                <option value="Internal Audit">1. Internal Audit</option>
+                <option value="Stock Audit">2. Stock Audit</option>
+                <option value="Mystery Shopping">3. Mystery Shopping</option>
+                <option value="ITR Filing">4. ITR Filing</option>
+                <option value="GST & TDS Filing">5. GST & TDS Filing</option>
+                <option value="ESI & EPF">6. ESI & EPF</option>
+                <option value="Accounting Services">7. Accounting Services</option>
+                <option value="Bookkeeping">8. Bookkeeping</option>
+                <option value="Bank Projections">9. Bank Projections</option>
+                <option value="Investment Advisory">10. Investment Advisory</option>
+                <option value="Insurance Advisory">11. Insurance Advisory</option>
+                <option value="Tax Planning">12. Tax Planning</option>
+                <option value="GST Registration">13. GST Registration</option>
+                <option value="Income Tax Reg">14. Income Tax Registration</option>
+                <option value="FCRA Filing">15. FCRA Filing</option>
+                <option value="Udyam Registration">16. Udyam Registration</option>
+                <option value="Personal Finance">17. Personal Finance</option>
+                <option value="Corp. Financial Strategy">18. Corp. Financial Strategy</option>
+                <option value="Retirement Planning">19. Retirement Planning</option>
+                <option value="Budget & Forecast">20. Budget & Forecast</option>
+                <option value="Financial Analysis">21. Financial Analysis</option>
+                <option value="DSC Assistance">22. DSC Assistance</option>
+                <option value="Project Reports">23. Project Reports</option>
+                <option value="Audit Support">24. Audit Support</option>
+                <option value="Outsourcing">25. Outsourcing</option>
+            </select>
+        </div>
+        <button type="submit" class="form-submit" id="my-form-button">Submit Request</button>
+        <p id="my-form-status" style="margin-top:15px; font-weight:bold; text-align:center;"></p>
+    </form>
+</div>
+    </section>
+
+    <section class="section fade-in-section">
+        <div class="section-title">
+            <h2>The Power of <span>25</span></h2>
+            <p style="color:#94a3b8; max-width:600px; margin:0 auto;">Our unique identity: Energy, Timing, and Expertise.</p>
+        </div>
+        <div class="dna-grid">
+            
+            <div class="dna-card">
+                <span class="dna-icon">⚡</span>
+                <h3>25 Years Young</h3>
+                <p>Founded by partners at the peak of ambition, discipline, and drive.</p>
+                <p>25 CORE Consultancy stands on a strong foundation built through years of learning, growth, and real-world experience.</p>
+            </div>
+
+            <div class="dna-card">
+                <span class="dna-icon">📅</span>
+                <h3>Built for 2025 and Beyond</h3>
+                <p>Created in the digital era to meet the needs of the modern economy.</p>
+                <p>We combine smart thinking, accurate execution, and technology-driven solutions to support your financial goals.</p>
+            </div>
+
+            <div class="dna-card">
+                <span class="dna-icon">💼</span>
+                <h3>25+ Professional Services</h3>
+                <p>A complete hub for all your financial and compliance needs —</p>
+                <p>GST, Income Tax, Accounting, Registrations, and more.</p>
+                <p>Reliable, efficient, and client-focused support, every single time.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="why" class="section why-us-section fade-in-section">
+        <div class="section-title">
+            <h2>Why Choose <span>Us?</span></h2>
+            <p style="color:#94a3b8; max-width:600px; margin:0 auto;">The 25CORE Advantage</p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">🔒</div>
+                <div class="value-content">
+                    <h3>Confidentiality</h3>
+                    <p>We understand that financial data is the lifeblood of your business. We take the privacy of every piece of information you share with us very seriously. All of our employees and partners sign strict Non-disclosure agreements (NDAs) to ensure your data remains secure, private, and protected at all times.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-icon">👥</div>
+                <div class="value-content">
+                    <h3>True Experts</h3>
+                    <p>You deserve the best, so we have gathered the best. We recruit, train, and employ a highly skilled team of professionals who are focused on understanding the unique needs of your business first. We don't just crunch numbers; we provide expert insight. Simply put – we care about your growth.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-icon">⚙️</div>
+                <div class="value-content">
+                    <h3>Customized Solutions</h3>
+                    <p>We know from experience that one size does not fit all. We listen to your specific challenges and work from scratch to give shape to your unique vision. No two businesses are alike, and neither are our strategies. We are dynamic, flexible, and tailored in our engagement with every client.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-icon">🌍</div>
+                <div class="value-content">
+                    <h3>Footprint In All Industries</h3>
+                    <p>Our clients come from all spectrums of industries, from aspiring entrepreneurs to established companies engaged in Hospitality, Information Technology, Manufacturing, Real Estate, Government/Public Sector undertakings, and Financial institutions. We have the breadth of experience to handle any sector.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-icon">💡</div>
+                <div class="value-content">
+                    <h3>Technology Driven</h3>
+                    <p>We transform businesses by helping them navigate the digital age. We help our clients by combining deep business expertise with modern tools to harness the power of technology. We focus on optimizing and automating your financial workflows to save time and reduce errors.</p>
+                </div>
+            </div>
+
+            <div class="value-item">
+                <div class="value-icon">🚀</div>
+                <div class="value-content">
+                    <h3>Fastest Turn-around Time</h3>
+                    <p>In financial and legal matters, time is of the essence. We stick rigidly to the timelines agreed upon and take pride in our track record of accurate and timely delivered services. We ensure speed without ever compromising on the quality or compliance of our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section fade-in-section">
+        <div class="section-title">
+            <h2>Our <span>25</span> Services</h2>
+            <p style="color:#94a3b8; max-width:600px; margin:0 auto;">A complete suite of financial solutions tailored for you.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/internal%20audit%20business%20meeting?width=400&height=200&nologo=true" alt="Internal Audit"></div>
+                <div class="service-info"><h3>1. Internal Audit</h3><p>Systematic review of internal controls and governance to improve operations.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/warehouse%20inventory%20check?width=400&height=200&nologo=true" alt="Stock Audit"></div>
+                <div class="service-info"><h3>2. Stock Audit</h3><p>Physical verification and valuation of inventory assets to prevent leakage.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/shopping%20mall%20review?width=400&height=200&nologo=true" alt="Mystery Shopping"></div>
+                <div class="service-info"><h3>3. Mystery Shopping</h3><p>Unbiased, anonymous evaluation of your customer service quality.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/tax%20filing%20online?width=400&height=200&nologo=true" alt="ITR Filing"></div>
+                <div class="service-info"><h3>4. ITR Filing</h3><p>Accurate income tax return filing for individuals and businesses.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/gst%20tax%20india?width=400&height=200&nologo=true" alt="GST Filing"></div>
+                <div class="service-info"><h3>5. GST & TDS Filing</h3><p>Timely GST returns and Tax Deducted at Source compliance.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://i.postimg.cc/y6ZLj5KW/ESI_and_EPF.png" alt="ESI EPF"></div>
+                <div class="service-info"><h3>6. ESI & EPF</h3><p>Management of employee state insurance and provident fund regulations.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/accountant%20ledger?width=400&height=200&nologo=true" alt="Accounting"></div>
+                <div class="service-info"><h3>7. Accounting Services</h3><p>End-to-end outsourcing of your financial accounts.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/bookkeeping%20calculator?width=400&height=200&nologo=true" alt="Bookkeeping"></div>
+                <div class="service-info"><h3>8. Bookkeeping</h3><p>Daily recording of financial transactions to keep books clean.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/financial%20graph%20growth?width=400&height=200&nologo=true" alt="Bank Projections"></div>
+                <div class="service-info"><h3>9. Bank Projections</h3><p>Project reports and CMA data for bank loans and funding.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/investment%20gold%20coins?width=400&height=200&nologo=true" alt="Investment Advisory"></div>
+                <div class="service-info"><h3>10. Investment Advisory</h3><p>Expert guidance on maximizing returns on your surplus funds.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/insurance%20policy%20document?width=400&height=200&nologo=true" alt="Insurance Advisory"></div>
+                <div class="service-info"><h3>11. Insurance Advisory</h3><p>Corporate and personal insurance planning to mitigate risk.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/tax%20planning%20strategy?width=400&height=200&nologo=true" alt="Tax Planning"></div>
+                <div class="service-info"><h3>12. Tax Planning</h3><p>Strategic legal methods to reduce your overall tax liability.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://i.postimg.cc/HWy6zKmc/GST_registration.jpg" alt="GST Registration"></div>
+                <div class="service-info"><h3>13. GST Registration</h3><p>Fast and hassle-free GST registration for new businesses.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://i.postimg.cc/DfXx6DhW/income_tax.jpg" alt="Income Tax Registration"></div>
+                <div class="service-info"><h3>14. Income Tax Reg</h3><p>PAN and TAN registration services for individuals and entities.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/global%20finance%20exchange?width=400&height=200&nologo=true" alt="FCRA Filing"></div>
+                <div class="service-info"><h3>15. FCRA Filing</h3><p>Compliance for NGOs receiving foreign contributions.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/small%20business%20india?width=400&height=200&nologo=true" alt="Udyam Registration"></div>
+                <div class="service-info"><h3>16. Udyam Registration</h3><p>MSME registration to avail government benefits.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/family%20finance%20planning?width=400&height=200&nologo=true" alt="Personal Finance"></div>
+                <div class="service-info"><h3>17. Personal Finance</h3><p>Holistic planning for personal savings and wealth creation.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/corporate%20strategy%20boardroom?width=400&height=200&nologo=true" alt="Corp Strategy"></div>
+                <div class="service-info"><h3>18. Corp. Financial Strategy</h3><p>High-level strategic planning for mergers and expansion.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/retirement%20relaxing?width=400&height=200&nologo=true" alt="Retirement Planning"></div>
+                <div class="service-info"><h3>19. Retirement Planning</h3><p>Securing your financial future for the post-work years.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/financial%20budget%20chart?width=400&height=200&nologo=true" alt="Budget & Forecast"></div>
+                <div class="service-info"><h3>20. Budget & Forecast</h3><p>Creating detailed budgets to track and predict cash flow.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/stock%20analysis%20screen?width=400&height=200&nologo=true" alt="Financial Analysis"></div>
+                <div class="service-info"><h3>21. Financial Analysis</h3><p>Deep-dive analysis of financial statements to assess health.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/digital%20signature%20usb?width=400&height=200&nologo=true" alt="DSC Assistance"></div>
+                <div class="service-info"><h3>22. DSC Assistance</h3><p>Procurement and management of Digital Signature Certificates.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://i.postimg.cc/J7kpxg8H/project_report.jpg" alt="Project Reports"></div>
+                <div class="service-info"><h3>23. Project Reports</h3><p>Detailed feasibility studies required for bank loan approvals.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/auditor%20signing%20paper?width=400&height=200&nologo=true" alt="Statutory Audit Support"></div>
+                <div class="service-info"><h3>24. Audit Support</h3><p>Preparing books and data to assist external statutory auditors.</p></div>
+            </div>
+            <div class="service-card">
+                <div class="service-img"><img src="https://image.pollinations.ai/prompt/outsourcing%20office%20team?width=400&height=200&nologo=true" alt="Outsourcing"></div>
+                <div class="service-info"><h3>25. Outsourcing</h3><p>Handling back-office finance functions to reduce overhead.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section grow-section fade-in-section">
+        <div class="section-title">
+            <h2>Let Us Help Your <span>Business Grow</span></h2>
+            <p style="color:#94a3b8; max-width:600px; margin:0 auto;">Whatever struggles your business may be going through now, we are sure we have seen it before.</p>
+        </div>
+
+        <div class="grow-grid">
+            <div class="grow-card">
+                <span class="grow-icon">💎</span>
+                <h3>Diverse Approach</h3>
+                <p>We diverge from the conventional text book ideologies and choose a more real world approach in our solutions.</p>
+            </div>
+
+            <div class="grow-card">
+                <span class="grow-icon">💬</span>
+                <h3>Expert Advice</h3>
+                <p>Work closely with the industry. We propagate a world where practical, affordable and expert solutions are available to businesses of all scales.</p>
+            </div>
+
+            <div class="grow-card">
+                <span class="grow-icon">🧠</span>
+                <h3>Proactive Outlook</h3>
+                <p>Our service approach is proactive not reactive. With our robust monitoring process, we identify and deal in a well designed manner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="section fade-in-section" style="background-color: #0b1121;">
+        <div class="section-title">
+            <h2>The <span>Partners</span></h2>
+        </div>
+
+        <div class="team-grid">
+            
+            <div class="partner-card">
+                <div>
+                    <div class="partner-img-container">
+                        <img src="https://i.postimg.cc/mDc80pFN/partner1.jpg" alt="Krishna Bala M V" onerror="this.src='https://via.placeholder.com/150?text=Partner'">
+                    </div>
+                    <h3>Krishna Bala M V</h3>
+                    <span class="designation">Managing Partner</span>
+                    <p>
+                        A dynamic Finance Analyst experienced in statutory audits, tax planning, and financial management. Specialized in ITR/GST filing and corporate finance strategies.
+                    </p>
+                </div>
+                <div class="partner-contact">
+                    <span>📞 62388 40931</span>
+                    <small>krishna.bala@25coreconsultancy.com</small>
+                    <a href="https://linkedin.com/in/krishnabalamv" target="_blank" class="linkedin-btn">View LinkedIn Profile</a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div>
+                    <div class="partner-img-container">
+                        <img src="https://i.postimg.cc/4dKBr2hP/partner2.jpg" alt="Haseena A Rahim" onerror="this.src='https://via.placeholder.com/150?text=Partner'">
+                    </div>
+                    <h3>Haseena A Rahim</h3>
+                    <span class="designation">Partner - Costing & Advisory</span>
+                    <p>
+                        Expertise in Financial Reporting and detailed Costing analysis. Specializes in Lender's Financial Advisory (Due Diligence) and optimizing Insurance portfolios.
+                    </p>
+                </div>
+                <div class="partner-contact">
+                    <span>📞 +91 75929 99560</span>
+                    <small>haseena.rahim@25coreconsultancy.com</small>
+                    <a href="https://www.linkedin.com/in/haseena-rahim-b39500358/?originalSubdomain=in" target="_blank" class="linkedin-btn">View LinkedIn Profile</a>
+                </div>
+            </div>
+
+            <div class="partner-card">
+                <div>
+                    <div class="partner-img-container">
+                        <img src="https://i.postimg.cc/sXBwtHZc/partner3.jpg" alt="Vidhyamithran A P" onerror="this.src='https://via.placeholder.com/150?text=Partner'">
+                    </div>
+                    <h3>Vidhyamithran A P</h3>
+                    <span class="designation">Partner - Audit & Assurance</span>
+                    <p>
+                        A seasoned auditor with 5 years of experience. Specializes in statutory and internal audits, bringing regulatory precision to every engagement.
+                    </p>
+                </div>
+                <div class="partner-contact">
+                    <span>📞 +91 99616 94851</span>
+                    <small>vidhya.mithran@25coreconsultancy.com</small>
+                    <a href="https://www.linkedin.com/in/vidhyamithran-a-p-b36824201/?originalSubdomain=in" target="_blank" class="linkedin-btn">View LinkedIn Profile</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact" class="fade-in-section">
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/25core_consultancy/?igsh=dzg1eDN2MzFhYzRz#">Instagram</a> | 
+            <a href="https://www.facebook.com/p/25-CORE-Consultancy-61581454542663/">Facebook</a> | 
+            <a href="https://www.linkedin.com/company/25core-consultancy/?viewAsMember=true">LinkedIn</a> | 
+            <a href="https://x.com/25coreconsult">Twitter</a>
+        </div>
+        <p style="color:#666; font-size:0.9rem;">
+            Offices in Balaramapuram, Thiruvallam, and Thirumala.<br>
+            &copy; 2025 25CORE Consultancy. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        /* --- SCROLL ANIMATION SCRIPT --- */
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
