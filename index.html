@@ -517,6 +517,68 @@ body {
     position: relative;
     overflow: visible !important;
 }
+/* ===============================
+   BURGER MENU (MOBILE ONLY)
+   =============================== */
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.burger span {
+    width: 26px;
+    height: 3px;
+    background: var(--teal-accent);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* MOBILE NAV */
+@media (max-width: 900px) {
+
+    .burger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(5, 10, 16, 0.98);
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px 0;
+        display: none;
+        border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* BURGER ANIMATION */
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
 
     </style>
 </head>
@@ -545,6 +607,12 @@ body {
             <a href="#services">Services</a>
             <a href="#team">Partners</a>
             <a href="#contact">Contact</a>
+        </div>
+
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
         <a href="#contact" class="btn-gold">Consult Now</a>
     </nav>
@@ -918,6 +986,23 @@ body {
                 observer.observe(section);
             });
         });
+        /* --- BURGER MENU SCRIPT --- */
+const burger = document.getElementById('burger');
+const navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+/* Close menu on link click (mobile UX fix) */
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        burger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
     </script>
 
 </body>
