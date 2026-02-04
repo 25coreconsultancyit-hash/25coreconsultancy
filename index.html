@@ -1480,144 +1480,127 @@
                 </div>
             </div>
 
-            <div class="apply-form">
-                <h3>Apply Now</h3>
-                <form id="careerForm" action="https://formspree.io/f/mpqarwjq" method="POST">
-                    <input type="hidden" name="_subject" value="New Job Application - 25CORE Careers">
-                    
-                    <h4 style="color: var(--gold-primary); margin-bottom: 15px; font-size: 1.1rem;">Personal Details</h4>
-                    
-                    <div class="form-row">
-                        <div>
-                            <label>First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required 
-                                   pattern="[A-Za-z]{2,30}" 
-                                   title="First name should only contain letters (2-30 characters)"
-                                   minlength="2" maxlength="30">
-                            <span class="form-error" id="firstName-error">Please enter a valid first name (letters only)</span>
-                        </div>
-                        <div>
-                            <label>Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required 
-                                   pattern="[A-Za-z]{2,30}" 
-                                   title="Last name should only contain letters (2-30 characters)"
-                                   minlength="2" maxlength="30">
-                            <span class="form-error" id="lastName-error">Please enter a valid last name (letters only)</span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div>
-                            <label>Date of Birth *</label>
-                            <input type="date" id="dateOfBirth" name="dateOfBirth" required 
-                                   min="1960-01-01" max="2010-12-31">
-                            <span class="form-error" id="dateOfBirth-error">Please enter a valid date of birth (age 18-65)</span>
-                        </div>
-                        <div>
-                            <label>Gender *</label>
-                            <select id="gender" name="gender" required>
-                                <option value="" disabled selected>Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                                <option value="Prefer not to say">Prefer not to say</option>
-                            </select>
-                            <span class="form-error" id="gender-error">Please select your gender</span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Current City *</label>
-                        <input type="text" id="currentCity" name="currentCity" required 
-                               pattern="[A-Za-z\s]{2,50}" 
-                               title="City name should only contain letters and spaces"
-                               minlength="2" maxlength="50">
-                        <span class="form-error" id="currentCity-error">Please enter a valid city name</span>
-                    </div>
-                    
-                    <h4 style="color: var(--gold-primary); margin: 25px 0 15px 0; font-size: 1.1rem;">Communication Details</h4>
-                    
-                    <div class="form-row">
-                        <div>
-                            <label>Mobile Number *</label>
-                            <input type="tel" id="mobile" name="mobile" required 
-                                   pattern="[0-9]{10}" 
-                                   title="Please enter a valid 10-digit mobile number"
-                                   minlength="10" maxlength="10">
-                            <span class="form-error" id="mobile-error">Please enter a valid 10-digit mobile number</span>
-                        </div>
-                        <div>
-                            <label>Email ID *</label>
-                            <input type="email" id="email" name="email" required 
-                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                   title="Please enter a valid email address">
-                            <span class="form-error" id="email-error">Please enter a valid email address</span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Current Address *</label>
-                        <input type="text" id="currentAddress" name="currentAddress" required 
-                               minlength="10" maxlength="200"
-                               title="Address should be between 10-200 characters">
-                        <span class="form-error" id="currentAddress-error">Please enter a valid address (10-200 characters)</span>
-                    </div>
-                    
-                    <h4 style="color: var(--gold-primary); margin: 25px 0 15px 0; font-size: 1.1rem;">Job Details</h4>
-                    
-                    <div class="form-group">
-                        <label>Position Applying For *</label>
-                        <select id="position" name="position" required>
-                            <option value="" disabled selected>Select Position</option>
-                            <option value="HR">HR</option>
-                            <option value="Senior Account Assistant">Senior Account Assistant</option>
-                            <option value="Public Relations Officer">Public Relations Officer</option>
-                            <option value="Administrative Officer">Administrative Officer</option>
-                        </select>
-                        <span class="form-error" id="position-error">Please select a position</span>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Brief Introduction *</label>
-                        <textarea id="introduction" name="introduction" rows="4" 
-                                  style="width: 100%; padding: 12px; background: #050a10; border: 1px solid #1e293b; color: white; border-radius: 4px; resize: vertical; font-family: inherit;" 
-                                  required 
-                                  minlength="50" maxlength="1000"
-                                  placeholder="Tell us about yourself, your experience, and why you want to join 25CORE... (50-1000 characters)"></textarea>
-                        <span class="form-error" id="introduction-error">Please provide an introduction (50-1000 characters)</span>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div>
-                            <label>Preferred Location *</label>
-                            <input type="text" id="preferredLocation" name="preferredLocation" required 
-                                   pattern="[A-Za-z\s,]{2,100}"
-                                   placeholder="e.g., Trivandrum, Kochi"
-                                   minlength="2" maxlength="100">
-                            <span class="form-error" id="preferredLocation-error">Please enter a valid location</span>
-                        </div>
-                        <div>
-                            <label>Work Type *</label>
-                            <select id="workType" name="workType" required>
-                                <option value="" disabled selected>Select Work Type</option>
-                                <option value="Full Time">Full Time</option>
-                                <option value="Part Time">Part Time</option>
-                                <option value="Remote">Remote</option>
-                            </select>
-                            <span class="form-error" id="workType-error">Please select work type</span>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">Submit Application</button>
-                    
-                    <div class="form-success" id="career-success">Application submitted! Please email your CV to career@25coreconsultancy.com</div>
-                    
-                    <p style="margin-top: 20px; text-align: center; color: #94a3b8; font-size: 0.9rem;">
-                        After submitting this form, please email your CV to:<br>
-                        <strong style="color: var(--teal-accent);">career@25coreconsultancy.com</strong>
-                    </p>
-                </form>
+           <div class="apply-form">
+    <h3>Apply Now</h3>
+    <form id="careerForm" action="https://formspree.io/f/mpqarwjq" method="POST">
+        <input type="hidden" name="_subject" value="New Job Application - 25CORE Careers">
+        
+        <h4 style="color: var(--gold-primary); margin-bottom: 15px; font-size: 1.1rem;">Personal Details</h4>
+        
+        <div class="form-row">
+            <div>
+                <label>First Name *</label>
+                <input type="text" id="firstName" name="firstName" required>
+                <span class="form-error" id="firstName-error">Please enter a valid first name</span>
             </div>
+            <div>
+                <label>Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required>
+                <span class="form-error" id="lastName-error">Please enter a valid last name</span>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div>
+                <label>Date of Birth *</label>
+                <input type="date" id="dateOfBirth" name="dateOfBirth" required 
+                       min="1960-01-01" max="2010-12-31">
+                <span class="form-error" id="dateOfBirth-error">Please enter a valid date of birth</span>
+            </div>
+            <div>
+                <label>Gender *</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+                <span class="form-error" id="gender-error">Please select your gender</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Current City *</label>
+            <input type="text" id="currentCity" name="currentCity" required>
+            <span class="form-error" id="currentCity-error">Please enter a valid city name</span>
+        </div>
+        
+        <h4 style="color: var(--gold-primary); margin: 25px 0 15px 0; font-size: 1.1rem;">Communication Details</h4>
+        
+        <div class="form-row">
+            <div>
+                <label>Mobile Number *</label>
+                <input type="tel" id="mobile" name="mobile" required 
+                       pattern="[0-9]{10}" 
+                       minlength="10" maxlength="10">
+                <span class="form-error" id="mobile-error">Please enter a valid 10-digit mobile number</span>
+            </div>
+            <div>
+                <label>Email ID *</label>
+                <input type="email" id="email" name="email" required>
+                <span class="form-error" id="email-error">Please enter a valid email address</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Current Address *</label>
+            <input type="text" id="currentAddress" name="currentAddress" required>
+            <span class="form-error" id="currentAddress-error">Please enter a valid address</span>
+        </div>
+        
+        <h4 style="color: var(--gold-primary); margin: 25px 0 15px 0; font-size: 1.1rem;">Job Details</h4>
+        
+        <div class="form-group">
+            <label>Position Applying For *</label>
+            <select id="position" name="position" required>
+                <option value="" disabled selected>Select Position</option>
+                <option value="HR">HR</option>
+                <option value="Senior Account Assistant">Senior Account Assistant</option>
+                <option value="Public Relations Officer">Public Relations Officer</option>
+                <option value="Administrative Officer">Administrative Officer</option>
+            </select>
+            <span class="form-error" id="position-error">Please select a position</span>
+        </div>
+        
+        <div class="form-group">
+            <label>Brief Introduction *</label>
+            <textarea id="introduction" name="introduction" rows="4" 
+                      style="width: 100%; padding: 12px; background: #050a10; border: 1px solid #1e293b; color: white; border-radius: 4px; resize: vertical; font-family: inherit;" 
+                      required 
+                      placeholder="Tell us about yourself, your experience, and why you want to join 25CORE..."></textarea>
+            <span class="form-error" id="introduction-error">Please provide an introduction</span>
+        </div>
+        
+        <div class="form-row">
+            <div>
+                <label>Preferred Location *</label>
+                <input type="text" id="preferredLocation" name="preferredLocation" required 
+                       placeholder="e.g., Trivandrum, Kochi">
+                <span class="form-error" id="preferredLocation-error">Please enter a valid location</span>
+            </div>
+            <div>
+                <label>Work Type *</label>
+                <select id="workType" name="workType" required>
+                    <option value="" disabled selected>Select Work Type</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Remote">Remote</option>
+                </select>
+                <span class="form-error" id="workType-error">Please select work type</span>
+            </div>
+        </div>
+        
+        <button type="submit" class="form-submit">Submit Application</button>
+        
+        <div class="form-success" id="career-success">Application submitted! Please email your CV to career@25coreconsultancy.com</div>
+        
+        <p style="margin-top: 20px; text-align: center; color: #94a3b8; font-size: 0.9rem;">
+            After submitting this form, please email your CV to:<br>
+            <strong style="color: var(--teal-accent);">career@25coreconsultancy.com</strong>
+        </p>
+    </form>
+</div>
         </div>
     </section>
 
@@ -1794,9 +1777,17 @@
         });
     }
 
-    /* --- C. CAREER FORM --- */
+     /* --- C. CAREER FORM --- */
     const careerForm = document.getElementById('careerForm');
     if (careerForm) {
+        // Helper function to validate spaces
+        function validateNoExcessSpaces(value) {
+            if (!value || value.trim() === '') return false;
+            if (value !== value.trim()) return false; // Leading/trailing spaces
+            if (/\s{2,}/.test(value)) return false; // Multiple consecutive spaces
+            return true;
+        }
+
         careerForm.addEventListener('submit', function(e) {
             e.preventDefault();
             let isValid = true;
@@ -1804,42 +1795,115 @@
             // First Name
             const fName = document.getElementById('firstName');
             const fNameError = document.getElementById('firstName-error');
-            const namePattern = /^[A-Za-z]{2,30}$/;
-            if (!fName.value.trim() || !namePattern.test(fName.value.trim())) {
-                fName.classList.add('input-error'); fNameError.classList.add('show'); isValid = false;
-            } else { fName.classList.remove('input-error'); fNameError.classList.remove('show'); }
+            if (!validateNoExcessSpaces(fName.value)) {
+                fName.classList.add('input-error'); 
+                fNameError.textContent = "No leading/trailing spaces or multiple consecutive spaces allowed";
+                fNameError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                fName.classList.remove('input-error'); 
+                fNameError.classList.remove('show'); 
+            }
 
             // Last Name
             const lName = document.getElementById('lastName');
             const lNameError = document.getElementById('lastName-error');
-            if (!lName.value.trim() || !namePattern.test(lName.value.trim())) {
-                lName.classList.add('input-error'); lNameError.classList.add('show'); isValid = false;
-            } else { lName.classList.remove('input-error'); lNameError.classList.remove('show'); }
+            if (!validateNoExcessSpaces(lName.value)) {
+                lName.classList.add('input-error'); 
+                lNameError.textContent = "No leading/trailing spaces or multiple consecutive spaces allowed";
+                lNameError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                lName.classList.remove('input-error'); 
+                lNameError.classList.remove('show'); 
+            }
 
-            // Mobile
+            // Current City
+            const city = document.getElementById('currentCity');
+            const cityError = document.getElementById('currentCity-error');
+            if (!validateNoExcessSpaces(city.value)) {
+                city.classList.add('input-error'); 
+                cityError.textContent = "No leading/trailing spaces or multiple consecutive spaces allowed";
+                cityError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                city.classList.remove('input-error'); 
+                cityError.classList.remove('show'); 
+            }
+
+            // Mobile (keep original 10-digit validation)
             const cMobile = document.getElementById('mobile');
             const cMobileError = document.getElementById('mobile-error');
             const mobilePattern = /^[0-9]{10}$/;
             if (!cMobile.value.trim() || !mobilePattern.test(cMobile.value.trim())) {
-                cMobile.classList.add('input-error'); cMobileError.classList.add('show'); isValid = false;
-            } else { cMobile.classList.remove('input-error'); cMobileError.classList.remove('show'); }
+                cMobile.classList.add('input-error'); 
+                cMobileError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                cMobile.classList.remove('input-error'); 
+                cMobileError.classList.remove('show'); 
+            }
 
-            // Email
+            // Email (keep original email validation)
             const cEmail = document.getElementById('email');
             const cEmailError = document.getElementById('email-error');
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!cEmail.value.trim() || !emailPattern.test(cEmail.value.trim())) {
-                cEmail.classList.add('input-error'); cEmailError.classList.add('show'); isValid = false;
-            } else { cEmail.classList.remove('input-error'); cEmailError.classList.remove('show'); }
+                cEmail.classList.add('input-error'); 
+                cEmailError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                cEmail.classList.remove('input-error'); 
+                cEmailError.classList.remove('show'); 
+            }
 
-            // We assume other fields (Date, Gender, etc.) are handled by 'required' attribute 
-            // or you can add specific JS checks here if needed.
+            // Current Address
+            const address = document.getElementById('currentAddress');
+            const addressError = document.getElementById('currentAddress-error');
+            if (!validateNoExcessSpaces(address.value)) {
+                address.classList.add('input-error'); 
+                addressError.textContent = "No leading/trailing spaces or multiple consecutive spaces allowed";
+                addressError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                address.classList.remove('input-error'); 
+                addressError.classList.remove('show'); 
+            }
+
+            // Introduction
+            const intro = document.getElementById('introduction');
+            const introError = document.getElementById('introduction-error');
+            if (!validateNoExcessSpaces(intro.value)) {
+                intro.classList.add('input-error'); 
+                introError.textContent = "Please provide a valid introduction without excess spaces";
+                introError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                intro.classList.remove('input-error'); 
+                introError.classList.remove('show'); 
+            }
+
+            // Preferred Location
+            const prefLoc = document.getElementById('preferredLocation');
+            const prefLocError = document.getElementById('preferredLocation-error');
+            if (!validateNoExcessSpaces(prefLoc.value)) {
+                prefLoc.classList.add('input-error'); 
+                prefLocError.textContent = "No leading/trailing spaces or multiple consecutive spaces allowed";
+                prefLocError.classList.add('show'); 
+                isValid = false;
+            } else { 
+                prefLoc.classList.remove('input-error'); 
+                prefLocError.classList.remove('show'); 
+            }
+
+            // Date of Birth, Gender, Position, Work Type are validated by 'required' attribute
 
             if (isValid) {
                 submitFormAjax(careerForm, 'career-success');
             }
         });
     }
+
 </script>
 </body>
 </html>
