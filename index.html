@@ -758,6 +758,132 @@
 }
 .partner-form-wide .form-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3); }
 @media (max-width: 768px) { .partner-form-wide { padding: 20px; } }
+/* --- GOOGLE REVIEWS SCROLLING SECTION --- */
+.reviews-section {
+    background: #050a10;
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* This creates the moving horizontal line */
+.reviews-slider {
+    display: flex;
+    width: max-content; /* Automatically fits all cards */
+    animation: scrollReviews 30s linear infinite;
+}
+
+/* Stops moving when user puts mouse over it */
+.reviews-slider:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scrollReviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves halfway to loop perfectly */
+}
+
+.review-card {
+    width: 300px;
+    background: #0b1421;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 12px;
+    padding: 25px;
+    margin: 0 15px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.review-header img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--teal-accent);
+}
+
+.review-header h4 {
+    font-size: 1rem;
+    color: #fff;
+    margin: 0;
+}
+
+.stars {
+    color: #D4AF37;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.review-text {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.google-link-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.google-link-container {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensures buttons stack on mobile */
+}
+
+.btn-google, .btn-write-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* Read Reviews Button */
+.btn-google {
+    color: #22d3ee;
+    border: 1px solid rgba(34, 211, 238, 0.4);
+    background: transparent;
+}
+
+.btn-google:hover {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: #22d3ee;
+    transform: translateY(-2px);
+}
+
+/* Write a Review Button */
+.btn-write-review {
+    color: #000;
+    background: var(--gold-gradient);
+    border: none;
+}
+
+.btn-write-review:hover {
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+.google-icon {
+    width: 18px;
+    height: 18px;
+}
     </style>
 </head>
 <body>
@@ -1154,6 +1280,107 @@
     </div>
 
 </section>
+<section class="reviews-section fade-in-section">
+        <div class="section-title">
+            <h2>Client <span>Testimonials</span></h2>
+            <p style="color:#94a3b8; max-width:600px; margin:0 auto;">What people say about 25CORE Consultancy on Google</p>
+        </div>
+
+        <div class="reviews-slider">
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=A+S&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Arjun S.</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Very professional approach. They handled my GST registration and filing without any delays. Highly recommended for startups in Trivandrum."</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=M+R&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Meera Rajesh</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"The best consultancy for financial advisory. They provide clear insights and help in effective tax planning. Very satisfied with their service."</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=K+B&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Kiran Bhaskar</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Expert team. They helped us with our company's internal audit. Their attention to detail and compliance knowledge is impressive."</p>
+                </div>
+            </div>
+             <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=S+N&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Sneha Nair</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Quick turnaround for Udyam and DSC. 25CORE makes the legal side of business very easy for entrepreneurs."</p>
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=A+S&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Arjun S.</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Very professional approach. They handled my GST registration and filing without any delays."</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=M+R&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Meera Rajesh</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"The best consultancy for financial advisory. They provide clear insights and help in effective tax planning."</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=K+B&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Kiran Bhaskar</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Expert team. They helped us with our company's internal audit. Very impressive."</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <img src="https://ui-avatars.com/api/?name=S+N&background=0b1421&color=22d3ee" alt="User">
+                        <h4>Sneha Nair</h4>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-text">"Quick turnaround for Udyam and DSC. 25CORE makes the legal side of business very easy."</p>
+                </div>
+            </div>
+        </div>
+
+       <div class="google-link-container">
+    <a href="https://www.google.com/search?q=25+CORE+consultancy+Reviews" target="_blank" class="btn-google">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" class="google-icon">
+        Read More Reviews
+    </a>
+
+    <a href="https://www.google.com/search?q=25+CORE+consultancy+Reviews#lrd=0x45b057df24c4de4d:0x9ffc03188ad570de,3,,,," target="_blank" class="btn-write-review">
+        <span>✍️</span> Submit a Review
+    </a>
+</div>
+    </section>
    <section id="team" class="section fade-in-section" style="background-color: #0b1121;">
         <div class="section-title">
             <h2>Meet Our <span>Partners</span></h2>
